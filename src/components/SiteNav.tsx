@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/lib/site-data";
-import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -57,7 +56,6 @@ export function SiteNav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <Link
             href="#contact"
             className="hidden rounded-full bg-[var(--fg)] px-4 py-2 text-sm font-semibold text-[var(--bg)] transition-transform hover:scale-[1.02] sm:inline-flex"

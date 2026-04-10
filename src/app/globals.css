@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  CSS variables drive theming: toggling .dark on <html> swaps the palette.
+  Accent stays consistent for brand recognition in both modes.
+*/
+:root {
+  --bg: #f4f6fb;
+  --bg-elevated: #ffffff;
+  --fg: #0c0e14;
+  --fg-muted: #47557f;
+  --border: rgba(12, 14, 20, 0.08);
+  --accent: #ec4899;
+  --accent-glow: rgba(236, 72, 153, 0.35);
+}
+
+.dark {
+  --bg: #060708;
+  --bg-elevated: #0f1117;
+  --fg: #f4f6fb;
+  --fg-muted: #a8b6d4;
+  --border: rgba(244, 246, 251, 0.08);
+  --accent: #f472b6;
+  --accent-glow: rgba(244, 114, 182, 0.42);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-ink-950 bg-[var(--bg)] transition-colors duration-500;
+}
+
+.dark body {
+  @apply text-ink-50 bg-[var(--bg)];
+}
+
+/* Focus rings for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-[var(--bg)];
+}
+
+/* Reduce motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
